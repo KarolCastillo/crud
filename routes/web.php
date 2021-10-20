@@ -23,3 +23,6 @@ route::get("/form",[\App\Http\Controllers\UserController::class,'userform'])->na
 
 //Guardar Usuarios
 route::post("/save",[\App\Http\Controllers\UserController::class,'save']);
+
+//Eliminar usuario
+route::delete("/delete/{id}",[\App\Http\Controllers\UserController::class,'delete'])->name('delete');
