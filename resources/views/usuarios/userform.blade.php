@@ -1,4 +1,5 @@
 @extends('layouts.base')
+@section('content')
 
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -54,3 +55,4 @@
     <a class="btn btn-light btn-xs mt-5" href="{{ url ('/') }}"&laquo >VOLVER</a>
 
 </div>
+@endsection

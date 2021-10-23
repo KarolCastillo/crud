@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 //use \App\Http\Controllers\UserController;
 
+
 //Listado de Usuarios
 //route::get('/','UserController@list');
 route::get("/",[\App\Http\Controllers\UserController::class,'list']);

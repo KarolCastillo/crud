@@ -1,8 +1,10 @@
 @extends('layouts.base')
+@section('content')
+
  <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <h2 class="text-center mb-5">Usuarios admin</h2>
+            <h2 class="text-center mb-5" > Lista de Usuarios</h2>
             <a class="btn btn-success mb-4" href="{{ url('/form')}}">Agregar Usuario</a>
             <!-- esto es el mensaje flash-->
             @if(session('usuarioEliminado'))
@@ -54,3 +56,4 @@
 
     </div>
  </div>
+@endsection
