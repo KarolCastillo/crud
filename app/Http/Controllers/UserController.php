@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     //Listado de Usuario
     public function list(){
-        $data['users'] = Usuario::paginate(3);
+        $data['users'] = Usuario::paginate(5);
 
         return view('usuarios.list', $data);
 
@@ -40,4 +40,20 @@ class UserController extends Controller
 
         return back()->with('usuarioEliminado','Usuario Eliminado');
     }
+
+    //Formulario para editar Usuarios
+    public function editform($id){
+        $usuario=Usuario::findorFail($id);
+
+        return view('usuarios.editform', compact('usuario'));
+    }
+
+    //Edicion de usuarios
+    public function edit(Request $request,$id){
+       $datosUsuario = request()->except((['_token', '_method']));
+       Usuario::where('id', '=', $id)->update($datosUsuario);
+
+       return back()->with('usuarioModificado', 'Usuario modificado');
+    }
+
 }

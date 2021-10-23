@@ -25,6 +25,11 @@
                        <td>{{ $user->nombre }}</td>
                        <td>{{ $user->email }}</td>
                         <td>
+
+                            <a href = "{{ route ('editform', $user->id) }}" class="btn  btn-primary mb-2">
+                                <i class=" fas fa-pencil-alt"></i>
+                            </a>
+
                             <form action="{{route('delete', $user->id)}}" method="post">
                                 @csrf @method('DELETE')
 

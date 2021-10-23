@@ -26,3 +26,10 @@ route::post("/save",[\App\Http\Controllers\UserController::class,'save']);
 
 //Eliminar usuario
 route::delete("/delete/{id}",[\App\Http\Controllers\UserController::class,'delete'])->name('delete');
+
+//Formulario para editar usuarios
+route::get("/editform/{id}",[\App\Http\Controllers\UserController::class,'editform'])->name('editform');
+
+//Edicion de usuarios
+route::patch("/edit/{id}",[\App\Http\Controllers\UserController::class,'edit'])->name("edit");
+
