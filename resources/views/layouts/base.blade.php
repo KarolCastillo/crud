@@ -12,13 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
 </head>
 <body>
-<!--
- <nav class="navbar navbar-inverse bg-inverse">
-     <a class="navbar-brand" href="{{url ('/')}}">LISTADO DE USUARIOS </a>
- </nav>
- <div class="container">
-
- </div> -->
 
 <!-- Image and text -->
 <nav class="navbar navbar-light bg-info">

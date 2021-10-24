@@ -17,31 +17,36 @@
                   <tr>
                     <th>Nombre</th>
                     <th>Email</th>
+                    <th>Rol</th>
                     <th>Acciones</th>
+
+
                  </tr>
                 </thead>
 
-                <tbody>
+                <tbody class="">
                     @foreach($users as $user)
                     <tr>
                        <td>{{ $user->nombre }}</td>
                        <td>{{ $user->email }}</td>
+                        <td>{{$user->descripcion}}</td>
                         <td>
+                            <div class="btn-group">
+                            <a href = "{{ route ('editform', $user->id) }}">
+                                <i class=" fas fa-pencil-alt btn btn-outline-primary mr-3 mb-2"></i>
 
-                            <a href = "{{ route ('editform', $user->id) }}" class="btn  btn-primary mb-2">
-                                <i class=" fas fa-pencil-alt"></i>
                             </a>
 
                             <form action="{{route('delete', $user->id)}}" method="post">
                                 @csrf @method('DELETE')
 
-                                <button type="submit" onclick="return confirm('¿borrar?');" class="btn btn-danger">
+                                <button type="submit" onclick="return confirm('Eliminar Registro de Usuario');" class="btn btn-danger">
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
 
 
                             </form>
-
+                            </div>
                         </td>
 
                      </tr>
