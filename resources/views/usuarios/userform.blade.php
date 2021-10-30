@@ -28,7 +28,7 @@
                     @csrf
                     <div class="card-header text-center text-white bg-dark">AGREGAR USUARIO</div>
 
-                    <div class="card-body">
+                         <div class="card-body">
                         <div class="row form-group">
                             <label for="" class="col-2">Nombre</label>
                             <input type="text" name="nombre" class="form-control col-md-9">
@@ -49,7 +49,10 @@
                                 @endforeach
                             </select>
                         </div>
-
+                             <div class="row form-group">
+                                 <label for="" class="col-2">Imagen</label>
+                                 <input type="file" name="imagen" class="form-control col-md-9">
+                             </div>
                         <div class="row form-group">
                             <button type="submit" class="btn btn-outline-success col-md-9 offset-2" >Guardar Datos</button>
 

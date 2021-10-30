@@ -15,6 +15,7 @@
             <table class="table table-bordered table-striped text-center">
                 <thead>
                   <tr>
+                      <th>Foto</th>
                     <th>Nombre</th>
                     <th>Email</th>
                     <th>Rol</th>
@@ -27,6 +28,7 @@
                 <tbody class="">
                     @foreach($users as $user)
                     <tr>
+                        <td>{{ $user->imagen }}</td>
                        <td>{{ $user->nombre }}</td>
                        <td>{{ $user->email }}</td>
                         <td>{{$user->descripcion}}</td>

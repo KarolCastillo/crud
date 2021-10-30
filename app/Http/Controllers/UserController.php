@@ -33,13 +33,20 @@ class UserController extends Controller
    public function save(Request $request){
         /* Validamos los campos */
         $validator = $this->validate($request, [
+            'imagen'=> 'mimes:jpg,png,gif,bmp',
             'nombre'=> 'required|string|max:75',
             'email'=> 'required|string|max:45|email|unique:usuarios',
             'rol'=> 'required'
-        ]);
 
+        ]);
+                if($request->hasFile('imagen')){
+                    $file=$request->imagen;
+                    $file->move(public_path(). '/imagenes',$file->getClientOriginalName());
+                    $file->imagen=$file->getClientOriginalName();
+                }
         /* Guardamos en la Base de datos */
         Usuario::create([
+            'imagen' =>$validator['imagen'],
             'nombre'=>$validator['nombre'],
             'email'=>$validator['email'],
             'rol_id'=>$validator['rol']
