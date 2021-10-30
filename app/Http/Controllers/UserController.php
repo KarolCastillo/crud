@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Usuario;
+
 use App\Models\Rol;
+use App\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -33,16 +35,15 @@ class UserController extends Controller
    public function save(Request $request){
         /* Validamos los campos */
         $validator = $this->validate($request, [
-            'imagen'=> 'mimes:jpg,png,gif,bmp',
+            'imagen'=> 'required',
             'nombre'=> 'required|string|max:75',
             'email'=> 'required|string|max:45|email|unique:usuarios',
             'rol'=> 'required'
 
         ]);
-                if($request->hasFile('imagen')){
-                    $file=$request->imagen;
-                    $file->move(public_path(). '/imagenes',$file->getClientOriginalName());
-                    $file->imagen=$file->getClientOriginalName();
+       if($request->hasFile('imagen')){
+           $validator['imagen'] = $request-> file('imagen')->store('imagen','public');
+
                 }
         /* Guardamos en la Base de datos */
         Usuario::create([
@@ -51,7 +52,7 @@ class UserController extends Controller
             'email'=>$validator['email'],
             'rol_id'=>$validator['rol']
         ]);
-
+      // return redirect('/')->with('guardar', 'ok');
         return back()->with('usuarioGuardado','Usuario Guardado');
     }
 
@@ -73,6 +74,15 @@ class UserController extends Controller
     //Edicion de usuarios
     public function edit(Request $request,$id){
         $datosUsuario = request()->except((['_token', '_method']));
+
+        if($request->hasFile('imagen')){
+
+            $usuario = Usuario::findOrFail($id);
+            Storage::delete('public/'.$usuario->imagen);
+            $datosUsuario ['imagen'] = $request-> file('imagen')->store('imagen','public');
+        };
+
+
         Usuario::where('id', '=', $id)->update($datosUsuario);
 
         return back()->with('usuarioModificado', 'Usuario modificado');

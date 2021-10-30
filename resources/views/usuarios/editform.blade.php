@@ -24,7 +24,7 @@
             @endif
 
             <div class="card">
-                <form action="{{ route ('edit', $usuario ->id) }}" method="POST">
+                <form action="{{ route ('edit', $usuario ->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf @method('PATCH')
 
                     <div class="card-header text-center">Modificar Usuario</div>
@@ -40,6 +40,11 @@
                             <label for="" class="col-2">Email</label>
                             <input type="text" name="email" class="form-control col-md-9" value="{{$usuario->email}}">
                         </div>
+                          <div class="row form-group">
+                            <label for="" class="col-2">Imagen</label>
+                            <img src="{{ asset('imagen').'/'.$usuario->imagen}}" class="img-fluid img-thumbnail"  width="70px">
+                               <input type="file" name="imagen" class="hidden" value="{{ $usuario->imagen}}">
+                                        </div>
 
                         <div class="row mb-3">
                             <div class="col-6 offset-3">
@@ -56,6 +61,8 @@
                             </div>
                         </div>
 
+                       
+
                         <div class="row form-group">
                             <button type="submit" class="btn btn-success col-md-9 offset-2">Modificar</button>
                         </div>
@@ -66,6 +73,7 @@
             </div>
         </div>
     </div>
-    <a class="btn btn-info btn-xs mt-5" href=" {{ url('/') }}">&laquo volver</a>
+    <a class="btn btn-outline bg-danger btn-xs mt-5" href=" {{ url('/') }}">&laquo cancelar</a>
+
 </div>
 @endsection

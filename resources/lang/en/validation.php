@@ -148,7 +148,8 @@ return [
             'max:255'=> 'El email es demasiado largo',
             'email' => 'formato de email incorrecto',
             'unique' => 'el email ya existe'
-        ]
+        ],
+        
     ],
 
     /*

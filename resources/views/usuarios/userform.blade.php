@@ -24,7 +24,7 @@
         @endif
 
             <div class="card">
-                <form action="{{ url ('save') }}" method="POST">
+                <form action="{{ url ('save') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-header text-center text-white bg-dark">AGREGAR USUARIO</div>
 
@@ -48,6 +48,7 @@
                                     <option value="{{$roles->id_rol}}"> {{$roles->descripcion}}  </option>
                                 @endforeach
                             </select>
+
                         </div>
                              <div class="row form-group">
                                  <label for="" class="col-2">Imagen</label>
@@ -67,7 +68,7 @@
 
     </div>
 
-    <a class="btn btn-outline-info btn-xs mt-5" href=" {{ url('/') }}">&laquo volver</a>
+    <a class="btn btn-outline bg-danger btn-xs mt-5" href=" {{ url('/') }}">&laquo cancelar</a>
 
 </div>
 @endsection

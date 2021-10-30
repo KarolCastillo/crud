@@ -12,8 +12,8 @@
                     {{ session ('usuarioEliminado')}}
                 </div>
             @endif
-            <table class="table table-bordered table-striped text-center">
-                <thead>
+            <table class="table table-bordered table-striped text-center ">
+                <thead >
                   <tr>
                       <th>Foto</th>
                     <th>Nombre</th>
@@ -28,7 +28,11 @@
                 <tbody class="">
                     @foreach($users as $user)
                     <tr>
-                        <td>{{ $user->imagen }}</td>
+                       
+                         <td class="border border-secondary" >
+                 
+                             <img src="{{ asset('imagen').'/'.$user->imagen}}" class="img-fluid img-thumbnail"  width="70px">
+                        </td>
                        <td>{{ $user->nombre }}</td>
                        <td>{{ $user->email }}</td>
                         <td>{{$user->descripcion}}</td>
